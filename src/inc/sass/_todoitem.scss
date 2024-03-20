@@ -1,0 +1,260 @@
+ul.todo-item-list {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 100%;
+    background-color: #1e1929;
+    background-image: linear-gradient(hsla(259, 52%, 64%, 0.324) 1px, transparent 1px),
+        linear-gradient(to right, rgba(146, 115, 211, 0.295) 1px, #1e1929 1.1px);
+    background-size: 22px 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+    min-height: 397px;
+
+    li.todo-item-wrapper {
+        color: #fff;
+        width: fit-content;
+        background-color: rgb(70, 53, 156);
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        position: relative;
+        margin: 20px;
+        min-height: 60px;
+        gap: 10px;
+        font-size: 1.2rem;
+        &.completed {
+            background-color: rgba(47, 47, 47, 0.7);
+            backdrop-filter: blur(1px);
+            span.todo-item-text {
+                text-decoration: line-through;
+                color: rgb(200, 200, 200);
+                transition: color 0.2s;
+            }
+
+            button.edit-btn {
+                background-color: rgba(140, 64, 175, 0.5);
+                border: none;
+                color: rgb(174, 174, 174);
+            }
+            button.delete-todo {
+                color: rgb(255 59 134 / 50%);
+            }
+            span.separator-line::before {
+                background-color: rgba(81, 81, 81, 0.8);
+            }
+            span.counter {
+                color: #dcba0f6e;
+            }
+            button.mobile-todo-nav {
+                color: #6b6b6b;
+                transition: all 0.3s;
+
+                &:hover {
+                    color: #bdbdbd;
+                }
+            }
+            div.edit-todo-icon-wrapper {
+                color: #6b6b6b;
+                transition: all 0.3s;
+                &:hover {
+                    color: #bdbdbd;
+                }
+            }
+            div.drag-n-drop {
+                background-color: rgba(47, 47, 47, 0.7);
+            }
+        }
+        & > *:nth-child(n + 4):not(:last-child, .mobile-todo-nav) {
+            margin-right: 10px;
+        }
+        span.counter {
+            color: #dcb90f;
+        }
+
+        span.separator-dot {
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            height: 100%;
+            width: 10px;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                bottom: 50%;
+                left: 50%;
+                width: 4px;
+                transform: translateX(-50%);
+                height: 4px;
+                border-radius: 50%;
+                background-color: rgba(187, 187, 187, 0.8);
+            }
+        }
+
+        span.separator-line {
+            position: relative;
+            height: 100%;
+            margin: 0 10px;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 100%;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(187, 187, 187, 0.8);
+            }
+        }
+        span.todo-item-text {
+            color: rgb(255, 241, 189);
+        }
+        button.edit-btn {
+            background-color: rgb(149, 38, 200);
+            // border: 2px solid rgb(149, 38, 200);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+                transform: scale(1.05);
+                background-color: rgb(199, 80, 0);
+                // border: 2px solid rgb(199, 80, 0);
+            }
+            &:active {
+                position: relative;
+                top: 1px;
+            }
+        }
+
+        input[type="checkbox"].complete-btn {
+            accent-color: rgb(0, 195, 19);
+            height: 20px;
+            background-color: aqua;
+            border: none;
+            width: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        button.delete-todo {
+            color: rgb(255, 59, 134);
+            background-color: transparent;
+            border: none;
+            display: inline;
+            vertical-align: middle;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                vertical-align: middle;
+                transform: translateY(-1px);
+            }
+
+            &:hover {
+                transform: scale(1.08);
+                color: rgb(255, 0, 72);
+            }
+            &:active {
+                color: rgb(255, 0, 72);
+                transform: scale(0.97);
+            }
+        }
+        input[type="text"].edit-mode {
+            background: #320084;
+            color: #fff;
+            border: 1px solid #4400b1;
+            outline: 1px solid rgb(0, 238, 226);
+            padding: 3px;
+            width: 200px;
+            margin-right: 10px;
+
+            & ~ button.edit-btn {
+                background-color: rgb(208, 0, 115);
+                margin-right: 10px;
+                margin-left: 10px;
+
+                &:hover {
+                    background-color: rgb(0, 137, 75);
+                }
+            }
+        }
+    }
+    div.drag-n-drop {
+        background-image: radial-gradient(#d3d3d3 1px, transparent 1px);
+        background-size: 6px 6px;
+        background-color: #46359c;
+        width: 20px;
+        height: 100%;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        cursor: grab;
+        &:active {
+            cursor: grabbing;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+ul.todo-item-list li:has(div.drag-n-drop:active) {
+    z-index: 100;
+    background-color: hsla(259, 97%, 42%, 0.5);
+    backdrop-filter: blur(1px);
+    transition: color 0.2s, background-color 0.2s;
+    div.drag-n-drop {
+        background-image: radial-gradient(hsla(0, 0%, 83%, 0.7) 1px, transparent 1px);
+        background-color: transparent;
+        transition: background-image 0.2s, background-color 0.2s;
+    }
+    .edit-btn {
+        background-color: rgb(149, 38, 200, 0.5);
+        color: hsla(0, 0%, 100%, 0.5);
+    }
+
+    button.delete-todo {
+        color: rgb(255, 0, 72, 0.5);
+    }
+    input[type="checkbox"].complete-btn {
+        opacity: 0.5;
+    }
+
+    span.counter {
+        color: hsla(50, 87%, 46%, 0.5);
+        transition: color 0.2s;
+    }
+    span.todo-item-text {
+        color: rgba(255, 241, 189, 0.5);
+        transition: color 0.2s;
+    }
+    span.separator-line::before {
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: color 0.2s;
+    }
+
+    span.separator-dot::before {
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: color 0.2s;
+    }
+}

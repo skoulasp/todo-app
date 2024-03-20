@@ -1,0 +1,126 @@
+button.mobile-todo-nav {
+    display: none;
+}
+
+@media (min-width: 450px) {
+    div.mobile-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    ul.todo-item-list {
+        justify-content: center;
+        :is(span.separator-dot, button.edit-btn, input.complete-btn, button.delete-todo) {
+            display: none !important;
+        }
+
+        li.todo-item-wrapper {
+            align-self: flex-start;
+            min-width: 125px;
+            max-width: 100%;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            span.todo-item-text {
+                word-wrap: break-word;
+                font-size: 1rem;
+            }
+            span.separator-line {
+                width: 100%;
+                height: auto;
+                display: block;
+
+                &::before {
+                    height: 1px;
+                    width: 100%;
+                }
+            }
+        }
+        button.mobile-todo-nav {
+            border: none;
+            color: #fff;
+            margin-right: 0;
+            display: initial;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: rgba(188, 188, 188, 0.36);
+        }
+
+        div.mobile-menu {
+            font-size: 1.2rem;
+            display: flex;
+            min-width: 50px;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 20px;
+            cursor: pointer;
+            :is(span.separator-dot, button.edit-btn, input.complete-btn, button.delete-todo) {
+                display: revert !important;
+            }
+            div.checkbox-complete-wrapper {
+                input.complete-btn {
+                    vertical-align: middle;
+                    width: 15px !important;
+                    display: inline-block !important;
+                }
+            }
+
+            button.delete-todo {
+                font-size: 1.4rem;
+                text-align: right;
+                background-color: transparent;
+                border: none;
+                color: red;
+
+                svg {
+                    vertical-align: middle;
+                }
+            }
+
+            div.edit-todo-icon-wrapper {
+                &.editing {
+                    pointer-events: none;
+                }
+                svg {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    form.todo-form {
+        input.todo-field {
+            font-size: 1.4rem;
+            &::placeholder {
+                text-align: center;
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+            }
+        }
+        button {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+@media (max-width: 270px) {
+    form.todo-form {
+        input.todo-field {
+            height: 50px;
+            font-size: 1rem;
+            &::placeholder {
+                font-size: 1rem;
+                vertical-align: middle;
+            }
+        }
+        button {
+        }
+    }
+}
